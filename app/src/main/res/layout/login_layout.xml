@@ -33,7 +33,8 @@
             android:id="@+id/login"
             android:layout_height="wrap_content"
             android:layout_span="2"
-            android:text="Login" />
+            android:text="Login"
+            android:background="#5462ff" />
     </TableRow>
 
 </TableLayout>
