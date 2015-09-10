@@ -1,11 +1,13 @@
 package org.shaoyou.nongshop.task;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -32,14 +34,11 @@ import org.shaoyou.nongshop.model.Gson2.SearchGson;
  */
 public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultEntity>> {
 
-    public JieKou output;
-
-
-    private String ss;
+    ////
+//@TargetApi(Build.VERSION_CODES.CUPCAKE)
     private Context context;
     private CanShu canShu;
-    private SearchGson Result;
-    List<SearchGson.ResultEntity> listMap;
+
 
     public Search_Tas(Context context, CanShu canShu) {
         this.context = context;
@@ -47,22 +46,13 @@ public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultE
     }
 
 
-    //    public Search_Tas(Context context, List<SearchGson.ResultEntity> listMap ) {
-//        this.context = context;
-//        this.listMap=listMap;
-//    }
 
 
     @Override
     protected List<SearchGson.ResultEntity> doInBackground(Void... voids) {
 
 
-        Intent getIntentaa = ((Activity) context).getIntent();
-        int bbbb = getIntentaa.getIntExtra("xxoo", 0);
-        String StrNongHuMingEditText = getIntentaa.getStringExtra("StrNongHuMingEditText");
-        String StrZhongLeiEditText = getIntentaa.getStringExtra("StrZhongLeiEditText");
-        String StrstartDateiEditText = getIntentaa.getStringExtra("StrstartDateiEditText");
-        String StrendDateEditText = getIntentaa.getStringExtra("StrendDateEditText");
+
 
 
         List<SearchGson.ResultEntity> listMap = null;
@@ -74,7 +64,10 @@ public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultE
         canShu.setPageIndex(1);
         canShu.setPageSize(1);
         Log.d("AAA", "获取数据之前--------------------");
+
         listMap = Search_WebServiceUtil.getSearch(canShu);
+
+
         Log.d("TTT", listMap.get(0).getCROPNAME());
 
 
@@ -82,32 +75,34 @@ public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultE
         return listMap;
 
 
+//        String StrNongHuMingEditText = getIntentaa.getStringExtra("StrNongHuMingEditText");
+//        String StrZhongLeiEditText = getIntentaa.getStringExtra("StrZhongLeiEditText");
+//        String StrstartDateiEditText = getIntentaa.getStringExtra("StrstartDateiEditText");
+//        String StrendDateEditText = getIntentaa.getStringExtra("StrendDateEditText");
 
-
-
-
+//        Intent getIntentaa = ((Activity) context).getIntent();
+//        int bbbb = getIntentaa.getIntExtra("xxoo", 0);
     }
 
     @Override
     protected void onPostExecute(List<SearchGson.ResultEntity> listMap) {
-        super.onPostExecute(listMap);
-        try {
-            Log.d("AAA", "获取执行前");
+//        super.onPostExecute(listMap);
+//        try {
+//            Log.d("AAA", "获取执行前");
+//
+//            output.Huoqu(listMap);
+//            Log.d("AAA", "获取执行中");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
-            output.Huoqu(listMap);
-            Log.d("AAA", "获取执行中");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Log.d("AAA", "获取执行后");
+//        String topPan = listMap.get(0).getVMName();
+//        String Jiaoyi = listMap.get(0).getOTDATE();
+//        String ZHonle = listMap.get(0).getCROPNAME();
+//        String Nonghu = listMap.get(0).getFARMERNAME();
+//        String Dapeng = listMap.get(0).getGHNO();
 
-        String topPan = listMap.get(0).getVMName();
-        String Jiaoyi = listMap.get(0).getOTDATE();
-        String ZHonle = listMap.get(0).getCROPNAME();
-        String Nonghu = listMap.get(0).getFARMERNAME();
-        String Dapeng = listMap.get(0).getGHNO();
-
-        Log.d("SSS", "异步线程里面的" + topPan + "*****" + Jiaoyi + "*****" + ZHonle + "*****" + Nonghu + Dapeng + "*****");
+//        Log.d("SSS", "异步线程里面的" + topPan + "*****" + Jiaoyi + "*****" + ZHonle + "*****" + Nonghu + Dapeng + "*****");
 
     }
 

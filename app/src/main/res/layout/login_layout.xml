@@ -12,7 +12,8 @@
         <EditText
             android:id="@+id/account"
             android:layout_height="wrap_content"
-            android:hint="Input your account" />
+            android:hint="Input your account"
+            android:text="admin" />
     </TableRow>
 
     <TableRow>
@@ -24,7 +25,8 @@
         <EditText
             android:id="@+id/password"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="123456" />
     </TableRow>
 
     <TableRow>

@@ -39,9 +39,11 @@ public class Login extends Activity {
 
 
 
-                Login_NongTask nongTask = new Login_NongTask(Login.this, user, pass);
-                nongTask.execute();
 
+                Login_NongTask nongTask = new Login_NongTask(Login.this, user, pass);
+
+
+                nongTask.execute();
 
 
 
