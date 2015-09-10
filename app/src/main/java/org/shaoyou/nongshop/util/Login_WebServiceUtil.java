@@ -1,11 +1,13 @@
 package org.shaoyou.nongshop.util;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -24,10 +26,10 @@ public class Login_WebServiceUtil {
     public static final String SERVICE_URL = "http://172.19.3.60/ProductTrace/AppWebService.asmx";
 
     private MyGson gsonResult;
-    public static int UserIdString;
+
 
     // 调用远程webservice获取用户名密码
-    public static String getPassUser(String username, String password) {
+    public static MyGson getPassUser(String username, String password) {
 
         Log.d("AAA", "执行到最顶层");
         // 调用 的方法
@@ -60,7 +62,7 @@ public class Login_WebServiceUtil {
             if (envelope.getResponse() != null) {
                 // 获取服务器响应返回的SOAP消息
                 SoapObject result = (SoapObject) envelope.bodyIn;
-                String detail = (String) result.getProperty("QueryReceiveGoodsResult").toString();
+                String detail = (String) result.getProperty("ValidateUserLoginResult").toString();
                 // 解析服务器响应的SOAP消息
                 Log.d("AAA", detail + " ");
 
@@ -70,25 +72,7 @@ public class Login_WebServiceUtil {
                 }.getType();
                 MyGson jsonBean = gson.fromJson(detail, type);
 
-                UserIdString = jsonBean.getResult().getUserID();
-
-                String panduan;
-                String JieGuo;
-
-
-                if (jsonBean.getIsSuccess()) {
-
-                    JieGuo = "成功:getIsSuccess:true";
-                    panduan
-                            = "1";
-
-                } else {
-                    JieGuo = "失败:getIsSuccess:false";
-                    panduan = "0";
-
-                }
-
-                return panduan;
+                return jsonBean;
 
 
             }

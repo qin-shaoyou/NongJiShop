@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.widget.Toast;
 
 import org.shaoyou.nongshop.task.Login_NongTask;
+import org.shaoyou.nongshop.util.Login_WebServiceUtil;
 
 public class Login extends Activity {
 
@@ -35,14 +36,15 @@ public class Login extends Activity {
 
                 user = userEditTeXT.getText().toString().trim();
                 pass = passworTexzt.getText().toString().trim();
+
+
+
                 Login_NongTask nongTask = new Login_NongTask(Login.this, user, pass);
                 nongTask.execute();
-                if (Login_NongTask.Puanduan == 1) {
-                    Intent intent = new Intent(Login.this, Search.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(Login.this, "用户名或密码错误", 1).show();
-                }
+
+
+
+
             }
         });
     }

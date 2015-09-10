@@ -6,13 +6,15 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.shaoyou.nongshop.model.Gson2.MyGson;
+import org.shaoyou.nongshop.model.Gson2.SearchGson;
+import org.shaoyou.nongshop.tool.CanShu;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class Search_WebServiceUtil {
@@ -23,12 +25,11 @@ public class Search_WebServiceUtil {
     // 定义webservice提供服务的url
     public static final String SERVICE_URL = "http://172.19.3.60/ProductTrace/AppWebService.asmx";
 
-    private MyGson gsonResult;
-    public static int UserIdString;
 
     // 调用远程webservice获取用户名密码
-    public static String getSearch(String NongHuMing, String ZhongLei, String startDate, String endDate) {
+    public static List<SearchGson.ResultEntity> getSearch(CanShu canShu) {
 
+        List<SearchGson.ResultEntity> listaaa;
         Log.d("AAA", "执行到最顶层");
         // 调用 的方法
         String methodName = "QueryReceiveGoods";
@@ -43,11 +44,16 @@ public class Search_WebServiceUtil {
         // 实例化SoapObject对象
         SoapObject soapObject = new SoapObject(SERVICE_NAMESPACE,
                 methodName);
+        if (canShu != null) {
+            soapObject.addProperty("farmerName", canShu.getNongHuMing());//农户名
+            soapObject.addProperty("crops", canShu.getZhongLei());//农产品种类.
+            soapObject.addProperty("startDate", canShu.getStartDate());//农产品种类.
+            soapObject.addProperty("endDate", canShu.getEndDate());//农产品种类.
+        }
+        soapObject.addProperty("userID", canShu.getUserId());//获取UserID
+        soapObject.addProperty("pageSize", canShu.getPageSize());//
+        soapObject.addProperty("pageIndex", canShu.getPageIndex());//
 
-        soapObject.addProperty("farmerName", NongHuMing);//农户名
-        soapObject.addProperty("crops", ZhongLei);//农产品种类.
-        soapObject.addProperty("startDate", startDate);//农产品种类.
-        soapObject.addProperty("endDate", endDate);//农产品种类.
 
         envelope.bodyOut = soapObject;
         // 设置与.NET提供的webservice保持较好的兼容性
@@ -62,19 +68,20 @@ public class Search_WebServiceUtil {
 
                 // 获取服务器响应返回的SOAP消息
                 SoapObject result = (SoapObject) envelope.bodyIn;
-                String detail = (String) result.getProperty("ValidateUserLoginResult").toString();
+                String detail = (String) result.getProperty("QueryReceiveGoodsResult").toString();
                 // 解析服务器响应的SOAP消息
-
+                Log.d("AAA", "执行到Gson解析上面");
 
                 Gson gson = new Gson();
-                java.lang.reflect.Type type = new TypeToken<MyGson>() {
+                java.lang.reflect.Type type = new TypeToken<SearchGson>() {
                 }.getType();
-                MyGson jsonBean = gson.fromJson(detail, type);
 
-                jsonBean.getResult();
+                SearchGson jsonBean01 = gson.fromJson(detail, type);
+                listaaa = jsonBean01.getResult();
+//                int aaa = Log.d("AAA", jsonBean01.toString());
+//                Log.d("AAA", "这个hi才加的" + jsonBean01.getResult().get(1).getFARMERNAME());
 
-
-                return null;
+                return listaaa;
 
 
             }
