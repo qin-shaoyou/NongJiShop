@@ -38,11 +38,12 @@ public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultE
 //@TargetApi(Build.VERSION_CODES.CUPCAKE)
     private Context context;
     private CanShu canShu;
+    private int pageIndex;
 
-
-    public Search_Tas(Context context, CanShu canShu) {
+    public Search_Tas(Context context, CanShu canShu, int pageIndex) {
         this.context = context;
         this.canShu = canShu;
+        this.pageIndex = pageIndex;
     }
 
 
@@ -61,8 +62,8 @@ public class Search_Tas extends AsyncTask<Void, Integer, List<SearchGson.ResultE
         Intent intent = ((Activity) context).getIntent();
         canShu = (CanShu) intent.getSerializableExtra("user");
 
-        canShu.setPageIndex(1);
-        canShu.setPageSize(1);
+        canShu.setPageIndex(pageIndex);
+        canShu.setPageSize(4);
         Log.d("AAA", "获取数据之前--------------------");
 
         listMap = Search_WebServiceUtil.getSearch(canShu);
