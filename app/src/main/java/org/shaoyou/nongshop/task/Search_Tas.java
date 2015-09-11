@@ -1,33 +1,20 @@
 package org.shaoyou.nongshop.task;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 
 
-import org.shaoyou.nongshop.activity.Search;
-import org.shaoyou.nongshop.activity.Success;
-import org.shaoyou.nongshop.tool.CanShu;
+import org.shaoyou.nongshop.model.G.CanShu;
 
 import org.shaoyou.nongshop.util.Search_WebServiceUtil;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 
-import org.shaoyou.nongshop.model.Gson2.SearchGson;
+import org.shaoyou.nongshop.model.G.SearchGson;
 
 /**
  * Created by Administrator on 15-9-8.

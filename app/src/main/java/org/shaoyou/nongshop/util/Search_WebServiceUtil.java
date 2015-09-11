@@ -13,8 +13,8 @@ import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.shaoyou.nongshop.model.Gson2.SearchGson;
-import org.shaoyou.nongshop.tool.CanShu;
+import org.shaoyou.nongshop.model.G.SearchGson;
+import org.shaoyou.nongshop.model.G.CanShu;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class Search_WebServiceUtil {

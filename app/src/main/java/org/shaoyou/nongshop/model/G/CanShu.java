@@ -1,9 +1,9 @@
-package org.shaoyou.nongshop.tool;
+package org.shaoyou.nongshop.model.G;
 
 import java.io.Serializable;
 
 /**
- * Created by Administrator on 15-9-9.
+ * Created by Adam_Holy on 15-9-9.
  */
 public class CanShu implements Serializable {
     private String username;//用户名
@@ -22,7 +22,7 @@ public class CanShu implements Serializable {
 
     private int pageSize;  //空间大小
 
-    private int pageIndex; //wocao
+    private int pageIndex; //显示
 
     public String getUsername() {
         return username;

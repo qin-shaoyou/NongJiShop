@@ -1,6 +1,4 @@
-package org.shaoyou.nongshop.model.Gson2;
-
-import java.util.List;
+package org.shaoyou.nongshop.model.G;
 
 /**
  * Created by Administrator on 15-9-8.

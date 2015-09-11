@@ -7,15 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.shaoyou.nongshop.R;
-import org.shaoyou.nongshop.task.Search_Tas;
-import org.shaoyou.nongshop.tool.CanShu;
-import org.shaoyou.nongshop.util.Login_WebServiceUtil;
-import org.shaoyou.nongshop.util.Search_WebServiceUtil;
-
-import java.io.Serializable;
+import org.shaoyou.nongshop.model.G.CanShu;
 
 /**
  * Created by Administrator on 15-9-8.

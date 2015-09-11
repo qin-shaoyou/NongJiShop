@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import org.shaoyou.nongshop.activity.Login;
 import org.shaoyou.nongshop.activity.Search;
-import org.shaoyou.nongshop.model.Gson2.MyGson;
+import org.shaoyou.nongshop.model.G.MyGson;
 import org.shaoyou.nongshop.util.Login_WebServiceUtil;
 
 import java.util.List;

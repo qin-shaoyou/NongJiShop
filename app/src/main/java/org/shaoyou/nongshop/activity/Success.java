@@ -2,47 +2,31 @@ package org.shaoyou.nongshop.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
-import org.shaoyou.nongshop.Ctrl.DevidePage;
-import org.shaoyou.nongshop.Ctrl.MyAdapter;
-import org.shaoyou.nongshop.KK.KKAdapter;
+import org.shaoyou.nongshop.Adapter.Nong_Adapter;
 import org.shaoyou.nongshop.R;
-import org.shaoyou.nongshop.model.Gson2.SearchGson;
-import org.shaoyou.nongshop.task.JieKou;
-import org.shaoyou.nongshop.task.Search_Runnable;
+import org.shaoyou.nongshop.model.G.SearchGson;
 import org.shaoyou.nongshop.task.Search_Tas;
-import org.shaoyou.nongshop.tool.CanShu;
-import org.shaoyou.nongshop.util.Search_WebServiceUtil;
+import org.shaoyou.nongshop.model.G.CanShu;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by Administrator on 15-9-9.
- * implements JieKou
+ * 
  */
 public class Success extends Activity {
     private CanShu canShu;
     List<SearchGson.ResultEntity> output;
     private List<SearchGson.ResultEntity> data = new ArrayList<SearchGson.ResultEntity>();
     private ListView listView;
-    private MyAdapter adapter;
-    private KKAdapter kkAdapter;
+    private Nong_Adapter kkAdapter;
     private boolean is_divPage;// 是否进行分页操作
     private List<SearchGson.ResultEntity> oneTotal = new ArrayList<SearchGson.ResultEntity>();// 用来存放一页数据
     private List<SearchGson.ResultEntity> total = new ArrayList<SearchGson.ResultEntity>();//用来存放获取的所有数据
@@ -59,7 +43,7 @@ public class Success extends Activity {
 //        dialog.setTitle("提示:");
 //        dialog.setMessage("正在加载信息...");
 
-        kkAdapter = new KKAdapter(this, getData(1));
+        kkAdapter = new Nong_Adapter(this, getData(1));
         listView.setAdapter(kkAdapter);
 
 
@@ -76,7 +60,7 @@ public class Success extends Activity {
                  */
 
                 //
-                if (is_divPage && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && KKAdapter.boolenpuanduan) {
+                if (is_divPage && scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && Nong_Adapter.boolenpuanduan) {
                     Toast.makeText(Success.this, "正在获取更多数据...", Toast.LENGTH_SHORT).show();
 //
 

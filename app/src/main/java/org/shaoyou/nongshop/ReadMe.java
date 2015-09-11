@@ -6,7 +6,7 @@ package org.shaoyou.nongshop;
 public class ReadMe {
 
 /**
-
+ WOSAI 这是些咩咩啊 东西啊啊
     1.创建HttpTransportSE传输对象：HttpTransportSE ht = new HttpTransportSE(SERVICE_URL); SERVICE_URL是webservice提供服务的url
     2.使用SOAP1.1协议创建Envelop对象：SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
  设置SOAP协议的版本号，根据服务端WebService的版本号设置。

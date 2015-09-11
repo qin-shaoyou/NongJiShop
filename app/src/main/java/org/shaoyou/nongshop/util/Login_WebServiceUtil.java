@@ -1,20 +1,18 @@
 package org.shaoyou.nongshop.util;
 
-import android.content.Intent;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-import org.shaoyou.nongshop.model.Gson2.MyGson;
+import org.shaoyou.nongshop.model.G.MyGson;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class Login_WebServiceUtil {

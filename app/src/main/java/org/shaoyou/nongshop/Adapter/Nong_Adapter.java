@@ -1,4 +1,4 @@
-package org.shaoyou.nongshop.KK;
+package org.shaoyou.nongshop.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,20 +10,19 @@ import android.widget.Toast;
 
 
 import org.shaoyou.nongshop.R;
-import org.shaoyou.nongshop.model.Gson2.SearchGson;
-import org.w3c.dom.Text;
+import org.shaoyou.nongshop.model.G.SearchGson;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 15-9-11.
  */
-public class KKAdapter extends BaseAdapter {
+public class Nong_Adapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<SearchGson.ResultEntity> list;
     public static Boolean boolenpuanduan = true;
 
-    public KKAdapter(Context context, List<SearchGson.ResultEntity> list) {
+    public Nong_Adapter(Context context, List<SearchGson.ResultEntity> list) {
         inflater = LayoutInflater.from(context);
         this.list = list;
     }
@@ -55,9 +54,9 @@ public class KKAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        MyViewHolder viewHolder = null;
+        Nong_ViewHolder viewHolder = null;
         if (view == null) {
-            viewHolder = new MyViewHolder();
+            viewHolder = new Nong_ViewHolder();
             view = inflater.inflate(R.layout.item_result, null);
 
             viewHolder.vmname = (TextView) view.findViewById(R.id.vmname);
@@ -70,7 +69,7 @@ public class KKAdapter extends BaseAdapter {
 
             view.setTag(viewHolder);
         } else {
-            viewHolder = (MyViewHolder) view.getTag();
+            viewHolder = (Nong_ViewHolder) view.getTag();
         }
 
 

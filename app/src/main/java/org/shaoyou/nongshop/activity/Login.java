@@ -13,8 +13,11 @@ import android.widget.Toast;
 import org.shaoyou.nongshop.task.Login_NongTask;
 import org.shaoyou.nongshop.util.Login_WebServiceUtil;
 
-public class Login extends Activity {
 
+public class Login extends Activity {
+    /**
+     * 登陆界面
+     */
     private Button loginBtn;
     private EditText userEditTeXT;
     private EditText passworTexzt;
@@ -36,13 +39,7 @@ public class Login extends Activity {
 
                 user = userEditTeXT.getText().toString().trim();
                 pass = passworTexzt.getText().toString().trim();
-
-
-
-
                 Login_NongTask nongTask = new Login_NongTask(Login.this, user, pass);
-
-
                 nongTask.execute();
 
 

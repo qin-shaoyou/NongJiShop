@@ -1,4 +1,4 @@
-package org.shaoyou.nongshop.model.Gson2;
+package org.shaoyou.nongshop.model.G;
 
 import java.util.List;
 
